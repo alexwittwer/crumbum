@@ -8,6 +8,8 @@ import Posts from "./components/Posts/Posts.jsx";
 import PostPage from "./components/Posts/PostPage.jsx";
 import Users from "./components/Users/Users.jsx";
 import UserPage from "./components/Users/UserPage.jsx";
+import Login from "./components/Common/Login.jsx";
+import Signup from "./components/Common/Signup.jsx";
 
 const router = createBrowserRouter([
   {
@@ -29,6 +31,14 @@ const router = createBrowserRouter([
             element: <UserPage />,
           },
         ],
+      },
+      {
+        path: "/login",
+        element: <Login />,
+      },
+      {
+        path: "/signup",
+        element: <Signup />,
       },
     ],
   },
