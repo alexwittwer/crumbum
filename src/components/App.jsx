@@ -14,10 +14,17 @@ export default function App() {
   useEffect(() => {
     const userstorage = localStorage.getItem("user");
     if (!userstorage) {
-      const parsedUser = JSON.parse(userStorage);
+      return setUser(null);
+    } else {
+      const parsedUser = JSON.parse(userstorage);
       setUser(parsedUser);
     }
   }, []);
+
+  function logout() {
+    localStorage.removeItem("user");
+    return setUser(null);
+  }
 
   return (
     <UserContext.Provider value={user}>

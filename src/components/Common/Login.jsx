@@ -15,6 +15,7 @@ export default function Login() {
       navigate("/");
     }
     if (data) {
+      localStorage.setItem("user", JSON.stringify(data));
       setUser(data);
       navigate("/");
     }

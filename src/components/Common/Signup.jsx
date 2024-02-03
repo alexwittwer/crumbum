@@ -1,11 +1,13 @@
-import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import { LoginContext } from "../App";
 
 export default function Signup(data) {
   const [pwd, setPwd] = useState("");
   const [confirmPwd, setConfirmPwd] = useState("");
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
+  const navigate = useNavigate();
 
   async function signup(data) {
     const response = await fetch("https://crumbum-api.up.railway.app/users", {
@@ -41,7 +43,7 @@ export default function Signup(data) {
           <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
             <form
               className="card-body"
-              onSubmit={(e) => {
+              onSubmit={async (e) => {
                 e.preventDefault();
                 console.log({
                   name: username,
@@ -49,12 +51,14 @@ export default function Signup(data) {
                   bio: "Hello world!",
                   password: pwd,
                 });
-                signup({
+                await signup({
                   name: username,
                   bio: "Hello world!",
                   email: email,
                   password: pwd,
                 });
+
+                navigate("/login");
               }}
               method="POST"
             >
