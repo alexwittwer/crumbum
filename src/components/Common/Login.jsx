@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { UserContext, LoginContext } from "../App";
 import { useNavigate } from "react-router-dom";
+import { login } from "../../utils/login";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -20,20 +21,6 @@ export default function Login() {
       navigate("/");
     }
   }, [data]);
-
-  async function login(data) {
-    const response = await fetch(
-      "https://crumbum-api.up.railway.app/auth/login",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      }
-    );
-    return response.json();
-  }
 
   function handlePassword(input) {
     return setPwd(input);

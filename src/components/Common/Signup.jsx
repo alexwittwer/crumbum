@@ -1,6 +1,8 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
-import { LoginContext } from "../App";
+import { LoginContext, UserContext } from "../App";
+import { signup } from "../../utils/signup";
+import { login } from "../../utils/login";
 
 export default function Signup(data) {
   const [pwd, setPwd] = useState("");
@@ -8,17 +10,8 @@ export default function Signup(data) {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const navigate = useNavigate();
-
-  async function signup(data) {
-    const response = await fetch("https://crumbum-api.up.railway.app/users", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    });
-    return response.json();
-  }
+  const setUser = useContext(LoginContext);
+  const user = useContext(UserContext);
 
   function handlePassword(input) {
     return setPwd(input);
@@ -57,8 +50,12 @@ export default function Signup(data) {
                   email: email,
                   password: pwd,
                 });
+                await login({
+                  email: email,
+                  password: pwd,
+                }).then((data) => setUser(data));
 
-                navigate("/login");
+                navigate("/");
               }}
               method="POST"
             >
