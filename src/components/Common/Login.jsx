@@ -1,10 +1,24 @@
-import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { UserContext, LoginContext } from "../App";
+import { useNavigate } from "react-router-dom";
 
 export default function Login() {
+  const navigate = useNavigate();
   const [pwd, setPwd] = useState("");
-  const [confirmPwd, setConfirmPwd] = useState("");
   const [email, setEmail] = useState("");
+  const [data, setData] = useState();
+  const setUser = useContext(LoginContext);
+  const user = useContext(UserContext);
+
+  useEffect(() => {
+    if (user) {
+      navigate("/");
+    }
+    if (data) {
+      setUser(data);
+      navigate("/");
+    }
+  }, [data]);
 
   async function login(data) {
     const response = await fetch(
@@ -35,12 +49,13 @@ export default function Login() {
           <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
             <form
               className="card-body"
-              onSubmit={(e) => {
+              onSubmit={async (e) => {
                 e.preventDefault();
-                login({
+                const userLogin = await login({
                   email: email,
                   password: pwd,
                 });
+                setData(userLogin);
               }}
             >
               <div className="form-control">
