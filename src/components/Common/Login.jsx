@@ -1,12 +1,48 @@
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 export default function Login() {
+  const [pwd, setPwd] = useState("");
+  const [confirmPwd, setConfirmPwd] = useState("");
+  const [email, setEmail] = useState("");
+
+  async function login(data) {
+    const response = await fetch(
+      "https://crumbum-api.up.railway.app/auth/login",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      }
+    );
+    return response.json();
+  }
+
+  function handlePassword(input) {
+    return setPwd(input);
+  }
+
+  function handleEmail(input) {
+    return setEmail(input);
+  }
+
   return (
     <>
       <div className="hero min-h-screen bg-base-200">
         <div className="hero-content flex-col lg:flex-row-reverse">
           <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-            <form className="card-body">
+            <form
+              className="card-body"
+              onSubmit={(e) => {
+                e.preventDefault();
+                login({
+                  email: email,
+                  password: pwd,
+                });
+              }}
+            >
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Email</span>
@@ -16,6 +52,7 @@ export default function Login() {
                   placeholder="email"
                   className="input input-bordered"
                   required
+                  onChange={(e) => handleEmail(e.target.value)}
                 />
               </div>
               <div className="form-control">
@@ -27,15 +64,13 @@ export default function Login() {
                   placeholder="password"
                   className="input input-bordered"
                   required
+                  onChange={(e) => handlePassword(e.target.value)}
                 />
-                <label className="label">
-                  <a href="#" className="label-text-alt link link-hover">
-                    Forgot password?
-                  </a>
-                </label>
               </div>
               <div className="form-control mt-6">
-                <button className="btn btn-primary">Login</button>
+                <button className="btn btn-primary" disabled={!pwd}>
+                  Login
+                </button>
               </div>
             </form>
           </div>
