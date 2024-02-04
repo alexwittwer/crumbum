@@ -16,19 +16,24 @@ export default function PostPage() {
 
   function unEscape(htmlStr) {
     htmlStr = htmlStr.replace(/&lt;/g, "<");
+    htmlStr = htmlStr.replace(/script/g, "scrip");
     htmlStr = htmlStr.replace(/&gt;/g, ">");
     htmlStr = htmlStr.replace(/&quot;/g, '"');
     htmlStr = htmlStr.replace(/&#x27;/g, "'");
+    htmlStr = htmlStr.replace(/&#x2F;/g, "/");
     htmlStr = htmlStr.replace(/&amp;/g, "&");
     return htmlStr;
   }
 
+  const postText = unEscape(post.text);
+
   return (
     <main>
-      <h1>{post.title}</h1>
-      <p>{post.lede}</p>
+      {console.log(typeof post.text)}
+      <h1 className="text-4xl">{post.title}</h1>
+      <h2 className="text-xl">{post.lede}</h2>
       <p>by {post.user.name}</p>
-      <p>{unEscape(post.text)}</p>
+      <div dangerouslySetInnerHTML={{ __html: postText }}></div>
     </main>
   );
 }
