@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { getProfile } from "../../utils/profile";
 import { useState, useEffect } from "react";
 
@@ -23,7 +23,7 @@ export default function UserPage() {
         <p>{profile.joinDate}</p>
         <p>Posts: </p>
         {profile.posts.map((post) => {
-          return <p>{post.title}</p>;
+          return <Link to={`/posts/${post._id}`}>{post.title}</Link>;
         })}
       </div>
     </main>
