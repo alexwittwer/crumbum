@@ -1,44 +1,34 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { useNavigate, Link, Outlet } from "react-router-dom";
+import { getPosts } from "../../utils/getposts";
 
 export default function Posts() {
   const [data, setData] = useState();
 
   useEffect(() => {
-    const postData = posts().then((data) => setData(Array.from(data)));
+    const postData = getPosts().then((data) => setData(Array.from(data)));
   }, []);
 
-  async function posts() {
-    const response = await fetch("https://crumbum-api.up.railway.app/posts", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    const results = await response.json();
-    return results;
-  }
   return (
-    <>
+    <main>
       {data &&
         data.map((individualPostData) => {
           return <Card key={individualPostData.id} data={individualPostData} />;
         })}
-    </>
+      <Outlet />
+    </main>
   );
 }
 
 function Card(data) {
-  console.log(data);
-  console.log(data.data.title);
   return (
-    <div className="card max-w-96 bg-base-100 shadow-xl">
-      <div className="card-body">
-        <h2 className="card-title">{data.data.title}</h2>
+    <article>
+      <div>
+        <h2>{data.data.title}</h2>
         <p>{data.data.user.name}</p>
-        <div className="card-actions justify-end">
-          <button className="btn btn-primary">Read now</button>
-        </div>
+        <p>{data.data.lede}</p>
+        <Link to={`/posts/${data.data._id}`}>Read now</Link>
       </div>
-    </div>
+    </article>
   );
 }

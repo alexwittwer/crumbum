@@ -7,8 +7,6 @@ export default function Header() {
   const setUser = useContext(LoginContext);
   const navigate = useNavigate();
 
-  console.log(user);
-
   function logout() {
     localStorage.removeItem("user");
     navigate("/");

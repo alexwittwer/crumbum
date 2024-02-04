@@ -13,6 +13,12 @@ export default function Signup(data) {
   const setUser = useContext(LoginContext);
   const user = useContext(UserContext);
 
+  useEffect(() => {
+    if (user) {
+      navigate("/");
+    }
+  }, []);
+
   function handlePassword(input) {
     return setPwd(input);
   }
