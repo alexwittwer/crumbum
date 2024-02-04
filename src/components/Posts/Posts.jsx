@@ -9,6 +9,10 @@ export default function Posts() {
     const postData = getPosts().then((data) => setData(Array.from(data)));
   }, []);
 
+  if (!data) {
+    return <p> loading ...</p>;
+  }
+
   return (
     <main>
       {data &&

@@ -52,6 +52,12 @@ export default function Header() {
                   <li>
                     <Link to="/posts">Posts</Link>
                   </li>
+                  <li>
+                    <Link to={`/user/${user.user.userid}`}>Profile</Link>
+                  </li>
+                  <li>
+                    <Link to={"/posts/create"}>Write</Link>
+                  </li>
                 </ul>
               )}
             </details>

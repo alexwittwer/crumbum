@@ -10,6 +10,7 @@ import Users from "./components/Users/Users.jsx";
 import UserPage from "./components/Users/UserPage.jsx";
 import Login from "./components/Common/Login.jsx";
 import Signup from "./components/Common/Signup.jsx";
+import PostCreate from "./components/Posts/PostCreate.jsx";
 
 const router = createBrowserRouter([
   {
@@ -23,11 +24,11 @@ const router = createBrowserRouter([
       },
       { path: "/posts/:postid", element: <PostPage /> },
       {
-        path: "/users",
+        path: "/user",
         element: <Users />,
       },
       {
-        path: "/users/:userid",
+        path: "/user/:userid",
         element: <UserPage />,
       },
       {
@@ -37,6 +38,10 @@ const router = createBrowserRouter([
       {
         path: "/signup",
         element: <Signup />,
+      },
+      {
+        path: "/posts/create",
+        element: <PostCreate />,
       },
     ],
   },
