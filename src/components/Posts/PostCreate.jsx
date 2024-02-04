@@ -3,6 +3,7 @@ import { UserContext } from "../App";
 import { useNavigate } from "react-router-dom";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
+import "react-quill/dist/quill.bubble.css";
 import { post } from "../../utils/post";
 
 export default function PostCreate() {
@@ -54,7 +55,12 @@ export default function PostCreate() {
           name="lede"
           onChange={(e) => handleLede(e.target.value)}
         />
-        <ReactQuill theme="snow" value={value} onChange={setValue} />
+        <ReactQuill
+          className="min-h-28"
+          theme="snow"
+          value={value}
+          onChange={setValue}
+        />
         <button>Submit</button>
       </form>
     </main>
