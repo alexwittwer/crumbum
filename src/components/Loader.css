@@ -1,5 +1,5 @@
 .square-spin-2 {
-  --size: 24px;
+  --size: 44px;
   --stroke-width: calc(var(--size) / 6);
   --color: currentColor;
   --animation-timing-function: linear;

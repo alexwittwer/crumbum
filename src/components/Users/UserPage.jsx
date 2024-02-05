@@ -11,7 +11,7 @@ export default function UserPage() {
   }, []);
 
   if (!profile) {
-    return <p>loading ... </p>;
+    return <div className="mx-auto square-spin-2"></div>;
   }
 
   return (
