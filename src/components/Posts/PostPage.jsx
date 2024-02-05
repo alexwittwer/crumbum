@@ -24,7 +24,7 @@ export default function PostPage() {
   const postText = escapeHTML(post.text);
 
   return (
-    <main className="mx-3 max-w-lg mb-8 flex flex-col items-center gap-5">
+    <main className="mx-auto max-w-lg mb-8 flex flex-col gap-5">
       {user
         ? user.user.userid === post.user._id && (
             <div>
