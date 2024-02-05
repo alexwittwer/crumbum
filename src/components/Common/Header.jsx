@@ -24,13 +24,13 @@ export default function Header() {
         {!user ? (
           <>
             <li>
-              <Link className="btn btn-secondary btn-square" to="/signup">
+              <Link className="btn btn-secondary" to="/signup">
                 Join
               </Link>
             </li>
 
             <li>
-              <Link className="btn btn-accent btn-square" to="/posts">
+              <Link className="btn btn-accent" to="/posts">
                 Posts
               </Link>
             </li>
