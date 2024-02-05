@@ -12,7 +12,7 @@ export default function Landing() {
         <div className="hero-content text-center">
           <div className="max-w-md flex-col flex gap-5">
             <h1 className="text-5xl font-bold">
-              Hello there {user && user.user.email}
+              {user ? "Welcome back" : "Hello there"}
             </h1>
             {user !== null ? (
               <div className="">
