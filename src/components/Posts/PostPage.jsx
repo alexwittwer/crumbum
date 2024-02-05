@@ -10,12 +10,17 @@ import { deletePost } from "../../utils/deletepost";
 export default function PostPage() {
   const { postid } = useParams();
   const [post, setPost] = useState(null);
+  const [comment, setComment] = useState("");
   const user = useContext(UserContext);
   const navigate = useNavigate();
 
   useEffect(() => {
     const postdata = getPosts(postid).then((data) => setPost(data));
   }, []);
+
+  function handleComment(input) {
+    return setComment(input);
+  }
 
   if (!post) {
     return <div className="mx-auto square-spin-2"></div>;
@@ -55,23 +60,32 @@ export default function PostPage() {
         className="max-w-lg"
         dangerouslySetInnerHTML={{ __html: postText }}
       ></div>
-      <Comment />
+      <Comment comments={post.comments} />
     </main>
   );
 }
 
 export function Comment() {
   return (
-    <form>
-      <textarea
-        className="w-full p-2 input input-bordered"
-        placeholder="Add your comment"
-        type="text"
-        rows={"50"}
-        cols={"5"}
-        name="comment"
-      />
-      <button>Add</button>
-    </form>
+    <>
+      <p>Comments</p>
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+        }}
+      >
+        <textarea
+          className="w-full textarea textarea-bordered p-2"
+          placeholder="Add your comment"
+          type="text"
+          rows={5}
+          cols={20}
+          name="comment"
+          wrap="hard"
+          onChange={(e) => handleComment(e)}
+        />
+        <button className="btn btn-outline">Add</button>
+      </form>
+    </>
   );
 }
