@@ -52,6 +52,23 @@ export default function PostPage() {
         </Link>
       </p>
       <div dangerouslySetInnerHTML={{ __html: postText }}></div>
+      <Comment />
     </main>
+  );
+}
+
+export function Comment() {
+  return (
+    <form>
+      <textarea
+        className="w-full p-2 input input-bordered"
+        placeholder="Add your comment"
+        type="text"
+        rows={"50"}
+        cols={"5"}
+        name="comment"
+      />
+      <button>Add</button>
+    </form>
   );
 }
