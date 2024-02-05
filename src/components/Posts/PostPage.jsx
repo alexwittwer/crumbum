@@ -47,7 +47,7 @@ export default function PostPage() {
       <h1 className="text-4xl">{post.title}</h1>
       <p>
         by{" "}
-        <Link to={`/users/${post.user._id}`} className="underline ">
+        <Link to={`/user/${post.user._id}`} className="underline ">
           {post.user.name}
         </Link>
       </p>
