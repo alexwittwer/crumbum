@@ -24,7 +24,7 @@ export default function PostPage() {
   const postText = escapeHTML(post.text);
 
   return (
-    <main className="mx-3 max-w-md mb-8 flex flex-col gap-5">
+    <main className="mx-3 max-w-lg mb-8 flex flex-col gap-5">
       {user
         ? user.user.userid === post.user._id && (
             <div>
@@ -51,7 +51,7 @@ export default function PostPage() {
           {post.user.name}
         </Link>
       </p>
-      <div className="max-w-md" dangerouslySetInnerHTML={{ __html: postText }}></div>
+      <div className="max-w-lg" dangerouslySetInnerHTML={{ __html: postText }}></div>
     </main>
   );
 }
