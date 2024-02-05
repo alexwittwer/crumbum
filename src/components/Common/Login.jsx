@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { UserContext, LoginContext } from "../App";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { login } from "../../utils/login";
 
 export default function Login() {
@@ -70,6 +70,9 @@ export default function Login() {
                   onChange={(e) => handlePassword(e.target.value)}
                 />
               </div>
+              <Link className="my-3 text-center text-sm" to={"/signup"}>
+                Don't have an account? Signup
+              </Link>
               <div className="form-control mt-6">
                 <button className="btn btn-primary" disabled={!pwd}>
                   Login

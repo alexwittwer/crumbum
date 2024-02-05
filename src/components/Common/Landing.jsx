@@ -14,12 +14,39 @@ export default function Landing() {
             <h1 className="text-5xl font-bold">
               Hello there {user && user.user.email}
             </h1>
-            <button
-              className="btn btn-primary"
-              onClick={() => navigate("/signup")}
-            >
-              Get Started
-            </button>
+            {user !== null ? (
+              <div className="">
+                <button
+                  className="btn mx-3 btn-primary"
+                  onClick={() => {
+                    navigate("/posts/create");
+                  }}
+                >
+                  {" "}
+                  Create a new post
+                </button>
+                <button
+                  className="btn mx-3 btn-primary"
+                  onClick={() => {
+                    navigate("/posts");
+                  }}
+                >
+                  {" "}
+                  Browse posts
+                </button>
+              </div>
+            ) : (
+              <button
+                className="btn btn-primary"
+                onClick={() => {
+                  user !== null
+                    ? navigate("/posts/create")
+                    : navigate("/signup");
+                }}
+              >
+                Get Started
+              </button>
+            )}
           </div>
         </div>
       </div>

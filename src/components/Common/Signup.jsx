@@ -67,12 +67,12 @@ export default function Signup(data) {
             >
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text">Username</span>
+                  <span className="label-text">Full Name</span>
                 </label>
                 <input
                   type="text"
                   name="username"
-                  placeholder="username"
+                  placeholder="John Smith"
                   className="input input-bordered"
                   required
                   onChange={(e) => handleUsername(e.target.value)}
@@ -116,12 +116,15 @@ export default function Signup(data) {
                   onChange={(e) => handleConfirm(e.target.value)}
                 />
               </div>
+              <Link className="my-3 text-center text-sm" to={"/login"}>
+                Have an account? Login
+              </Link>
               <div className="form-control mt-6">
                 <button
                   className="btn btn-primary"
                   disabled={pwd !== confirmPwd || pwd === ""}
                 >
-                  Login
+                  Sign-up
                 </button>
               </div>
             </form>

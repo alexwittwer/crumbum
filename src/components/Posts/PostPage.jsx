@@ -1,7 +1,10 @@
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import { getPosts } from "../../utils/getposts";
 import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../App";
+import { escapeHTML } from "../../utils/unescape";
+import "./PostPage.css";
+import "../Loader.css";
 import { deletePost } from "../../utils/deletepost";
 
 export default function PostPage() {
@@ -15,40 +18,39 @@ export default function PostPage() {
   }, []);
 
   if (!post) {
-    return <p> loading ...</p>;
+    return <div className="mx-auto square-spin-2"></div>;
   }
 
-  function unEscape(htmlStr) {
-    htmlStr = htmlStr.replace(/&lt;/g, "<");
-    htmlStr = htmlStr.replace(/script/g, "scrip");
-    htmlStr = htmlStr.replace(/&gt;/g, ">");
-    htmlStr = htmlStr.replace(/&quot;/g, '"');
-    htmlStr = htmlStr.replace(/&#x27;/g, "'");
-    htmlStr = htmlStr.replace(/&#x2F;/g, "/");
-    htmlStr = htmlStr.replace(/&amp;/g, "&");
-    return htmlStr;
-  }
-
-  const postText = unEscape(post.text);
+  const postText = escapeHTML(post.text);
 
   return (
-    <main>
-      {user.user.userid === post.user._id && (
-        <button
-          onClick={async (e) => {
-            e.preventDefault();
-            await deletePost(post._id, user.token);
-            navigate("/posts");
-          }}
-        >
-          Delete
-        </button>
-      )}
-      {console.log(user.user.userid)}
-      {console.log(post.user._id)}
+    <main className="mx-3 mb-8 flex flex-col gap-5">
+      {user
+        ? user.user.userid === post.user._id && (
+            <div>
+              <button
+                onClick={async (e) => {
+                  e.preventDefault();
+                  await deletePost(post._id, user);
+                  navigate("/posts");
+                }}
+                className="p-2 bg-rose-700 font-semibold rounded-md m-3 hover:bg-rose-600"
+              >
+                Delete
+              </button>
+              <button className="p-2 bg-lime-700  hover:bg-lime-600 font-semibold rounded-md m-3">
+                Edit
+              </button>
+            </div>
+          )
+        : ""}
       <h1 className="text-4xl">{post.title}</h1>
-      <h2 className="text-xl">{post.lede}</h2>
-      <p>by {post.user.name}</p>
+      <p>
+        by{" "}
+        <Link to={`/users/${post.user._id}`} className="underline ">
+          {post.user.name}
+        </Link>
+      </p>
       <div dangerouslySetInnerHTML={{ __html: postText }}></div>
     </main>
   );

@@ -10,6 +10,7 @@ export default function PostCreate() {
   const [value, setValue] = useState("");
   const [title, setTitle] = useState("");
   const [lede, setLede] = useState("");
+  const [error, setError] = useState("");
   const navigate = useNavigate();
   const user = useContext(UserContext);
 
@@ -24,6 +25,7 @@ export default function PostCreate() {
   return (
     <main>
       <form
+        className="flex flex-col justify-center items-center"
         method="POST"
         onSubmit={async (e) => {
           e.preventDefault();
@@ -38,30 +40,47 @@ export default function PostCreate() {
             user.token
           ).then((data) => {
             if (data.message === "Post created") {
-              navigate("/posts");
+              navigate(`/posts/${data.id}`);
+            } else {
+              console.log(data);
+              setError(data);
             }
           });
         }}
       >
-        <label htmlFor="title">Title *</label>
-        <input
-          type="text"
-          name="title"
-          onChange={(e) => handleTitle(e.target.value)}
-        />
-        <label htmlFor="title">Summary *</label>
-        <input
-          type="text"
-          name="lede"
-          onChange={(e) => handleLede(e.target.value)}
-        />
-        <ReactQuill
-          className="min-h-28"
-          theme="snow"
-          value={value}
-          onChange={setValue}
-        />
-        <button>Submit</button>
+        <div className="w-3/4 grid gap-1">
+          {error &&
+            error.err.errors.map((err) => {
+              return <div key={err.path}>{err.msg}</div>;
+            })}
+          <div className="flex gap-5 items-center">
+            <input
+              className="w-full p-2 input input-bordered"
+              type="text"
+              name="title"
+              placeholder="Title *"
+              onChange={(e) => handleTitle(e.target.value)}
+            />
+          </div>
+          <div>
+            <input
+              className="w-full p-2 input input-bordered"
+              placeholder="Subtitle"
+              type="text"
+              name="lede"
+              onChange={(e) => handleLede(e.target.value)}
+            />
+          </div>
+          <ReactQuill
+            className="min-h-28"
+            theme="snow"
+            value={value}
+            onChange={setValue}
+          />
+        </div>
+        <button className="bg-teal-800 hover:bg-teal-600 rounded-md p-2 text-xl text-slate-50 my-20">
+          Submit
+        </button>
       </form>
     </main>
   );

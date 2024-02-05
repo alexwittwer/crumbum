@@ -16,15 +16,21 @@ export default function UserPage() {
 
   return (
     <main>
-      <div>
+      <div className="mx-3">
         <p>{profile.name}</p>
-        <p>{profile.email}</p>
-        <p>{profile.bio}</p>
-        <p>{profile.joinDate}</p>
-        <p>Posts: </p>
-        {profile.posts.map((post) => {
-          return <Link to={`/posts/${post._id}`}>{post.title}</Link>;
-        })}
+        <div className="flex flex-col gap-3 my-5">
+          <p>Posts</p>
+          {profile.posts.map((post) => {
+            return (
+              <Link
+                to={`/posts/${post._id}`}
+                className="t text-cyan-500 underline"
+              >
+                {post.title}
+              </Link>
+            );
+          })}
+        </div>
       </div>
     </main>
   );

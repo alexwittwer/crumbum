@@ -29,7 +29,7 @@ export default function App() {
   return (
     <UserContext.Provider value={user}>
       <LoginContext.Provider value={setUser}>
-        <div className="flex flex-col justify-between min-h-screen">
+        <div className="flex flex-col justify-between min-h-screen bg-base-200">
           <Header />
           {url.pathname === "/" ? <Landing /> : <Outlet />}
           <Footer />
