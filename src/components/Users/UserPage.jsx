@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 export default function UserPage() {
   const { userid } = useParams();
   const [profile, setProfile] = useState();
-  const [loading, set loading] = useState(true);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const prof = getProfile(userid).then((data) => {setProfile(data);
