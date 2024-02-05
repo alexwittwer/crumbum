@@ -51,7 +51,7 @@ export default function PostPage() {
           {post.user.name}
         </Link>
       </p>
-      <div dangerouslySetInnerHTML={{ __html: postText }}></div>
+      <div className="max-w-md" dangerouslySetInnerHTML={{ __html: postText }}></div>
     </main>
   );
 }
