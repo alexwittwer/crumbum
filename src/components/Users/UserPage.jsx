@@ -5,12 +5,15 @@ import { useState, useEffect } from "react";
 export default function UserPage() {
   const { userid } = useParams();
   const [profile, setProfile] = useState();
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const prof = getProfile(userid).then((data) => setProfile(data));
+    const prof = getProfile(userid).then((data) => {setProfile(data);
+    setLoading(false);
+    });
   }, []);
 
-  if (!profile) {
+  if (loading) {
     return <div className="mx-auto square-spin-2"></div>;
   }
 
@@ -20,7 +23,7 @@ export default function UserPage() {
         <p>{profile.name}</p>
         <div className="flex flex-col gap-3 my-5">
           <p>Posts</p>
-          {profile.posts.map((post) => {
+          {profile && profile.posts.map((post) => {
             return (
               <Link
                 to={`/posts/${post._id}`}

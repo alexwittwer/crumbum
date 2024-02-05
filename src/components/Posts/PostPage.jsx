@@ -24,7 +24,7 @@ export default function PostPage() {
   const postText = escapeHTML(post.text);
 
   return (
-    <main className="mx-3 mb-8 flex flex-col gap-5">
+    <main className="mx-auto max-w-lg my-8 flex flex-col gap-5">
       {user
         ? user.user.userid === post.user._id && (
             <div>
@@ -47,11 +47,14 @@ export default function PostPage() {
       <h1 className="text-4xl">{post.title}</h1>
       <p>
         by{" "}
-        <Link to={`/users/${post.user._id}`} className="underline ">
+        <Link to={`/user/${post.user._id}`} className="underline ">
           {post.user.name}
         </Link>
       </p>
-      <div dangerouslySetInnerHTML={{ __html: postText }}></div>
+      <div
+        className="max-w-lg"
+        dangerouslySetInnerHTML={{ __html: postText }}
+      ></div>
       <Comment />
     </main>
   );
