@@ -29,8 +29,6 @@ export default function PostCreate() {
         method="POST"
         onSubmit={async (e) => {
           e.preventDefault();
-          console.log(value);
-          console.log(title);
           post(
             {
               text: value,

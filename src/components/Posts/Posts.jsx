@@ -16,7 +16,7 @@ export default function Posts() {
   }
 
   return (
-    <main className="grid mx-5 grid-cols-1 gap-5 my-5 overflow-y-auto">
+    <main className="grid grid-cols-1 gap-5 my-5 mx-auto overflow-y-auto">
       {data &&
         data.map((individualPostData) => {
           return <Card key={individualPostData.id} data={individualPostData} />;

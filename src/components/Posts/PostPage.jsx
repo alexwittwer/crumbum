@@ -123,7 +123,7 @@ export function ShowComments(post) {
       {post.post.comments &&
         post.post.comments.map((comment) => {
           return (
-            <div className="flex flex-col gap-3 border-opacity-50 p-3 border-2">
+            <div className="flex flex-col gap-3 border-opacity-50 p-3 border-2 rounded-lg bg-opacity-55">
               <Link
                 className="underline link-info"
                 to={`/user/${comment.user._id}`}

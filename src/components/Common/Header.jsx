@@ -20,50 +20,71 @@ export default function Header() {
           CrumBum
         </Link>
       </div>
-      <div className="flex-none">
-        <ul className="menu menu-horizontal px-1">
-          <li>
-            <details>
-              <summary>Menu</summary>
-              {!user ? (
-                <ul className="p-2 bg-base-100 rounded-t-none">
-                  <li>
-                    <Link to="/login"> Login </Link>
-                  </li>
-                  <li>
-                    <Link to="/signup">Join</Link>
-                  </li>
+      <ul className="flex gap-3 px-1">
+        {!user ? (
+          <>
+            <li>
+              <Link className="btn btn-secondary btn-square" to="/signup">
+                Join
+              </Link>
+            </li>
 
-                  <li>
-                    <Link to="/posts">Posts</Link>
-                  </li>
-                </ul>
-              ) : (
-                <ul className="p-2 bg-base-100 rounded-t-none">
-                  <li>
-                    <button
-                      onClick={(e) => {
-                        logout();
-                      }}
-                    >
-                      Logout
-                    </button>
-                  </li>
-                  <li>
-                    <Link to="/posts">Posts</Link>
-                  </li>
-                  <li>
-                    <Link to={`/user/${user.user.userid}`}>Profile</Link>
-                  </li>
-                  <li>
-                    <Link to={"/posts/create"}>Write</Link>
-                  </li>
-                </ul>
-              )}
-            </details>
-          </li>
-        </ul>
-      </div>
+            <li>
+              <Link className="btn btn-accent btn-square" to="/posts">
+                Posts
+              </Link>
+            </li>
+          </>
+        ) : (
+          <>
+            <ul className="menu menu-horizontal flex items-center gap-3 px-1">
+              <li>
+                <Link
+                  className="btn py-4 btn-primary hover:bg-cyan-400"
+                  to="/posts"
+                >
+                  View posts
+                </Link>
+              </li>
+              <li>
+                <details className="">
+                  <summary className="btn py-4 hover:bg-cyan-400 text-center btn-primary">
+                    Menu
+                  </summary>
+                  <ul className="p-2 flex flex-col gap-3 bg-base-100 rounded-t-none">
+                    <li>
+                      <Link
+                        className="btn hover:bg-cyan-300 btn-accent"
+                        to={`/user/${user.user.userid}`}
+                      >
+                        View Profile
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        className="btn hover:bg-cyan-300 btn-accent"
+                        to={"/posts/create"}
+                      >
+                        Write a post
+                      </Link>
+                    </li>
+                    <li>
+                      <button
+                        className="btn hover:bg-red-500 hover:text-slate-50 btn-secondary"
+                        onClick={(e) => {
+                          logout();
+                        }}
+                      >
+                        Logout
+                      </button>
+                    </li>
+                  </ul>
+                </details>
+              </li>
+            </ul>
+          </>
+        )}
+      </ul>
     </nav>
   );
 }
