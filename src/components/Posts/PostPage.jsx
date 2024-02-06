@@ -13,7 +13,6 @@ import { ShowComments } from "./ShowComment";
 export default function PostPage() {
   const { postid } = useParams();
   const [post, setPost] = useState(null);
-  const [comment, setComment] = useState("");
   const [loading, setLoading] = useState(true);
   const user = useContext(UserContext);
   const navigate = useNavigate();
