@@ -2,6 +2,7 @@ import { useNavigate, Link } from "react-router-dom";
 import { deleteComment } from "../../utils/deletecomment";
 import { useContext } from "react";
 import { UserContext } from "../App";
+import { escapeHTML } from "../../utils/unescape";
 
 export function ShowComments(post) {
   const user = useContext(UserContext);
@@ -22,7 +23,7 @@ export function ShowComments(post) {
               >
                 {comment.user.name}
               </Link>
-              <p>{comment.text}</p>
+              <p>{escapeHTML(comment.text)}</p>
               {user
                 ? user.user.userid === comment.user._id && (
                     <div className="flex justify-end my-3 gap-3">
