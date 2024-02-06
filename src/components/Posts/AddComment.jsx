@@ -5,23 +5,39 @@ import { UserContext } from "../App";
 
 export function AddComment(post) {
   const [comment, setComment] = useState("");
+  const [validationError, setValidationError] = useState("");
   const user = useContext(UserContext);
   const navigate = useNavigate();
 
+  console.log(validationError);
+
   function handleComment(input) {
-    console.log(comment);
     return setComment(input);
   }
 
   return (
     <>
-      <p>Comments</p>
+      <p>Comments</p>{" "}
+      {validationError &&
+        validationError.errors.map((error) => {
+          return <div key={error.path}>{error.msg}</div>;
+        })}
       <form
         onSubmit={async (e) => {
           e.preventDefault();
-          await postComment(post, { text: comment }, user.token).then(() => {
-            navigate(0);
-          });
+          try {
+            await postComment(post, { text: comment }, user.token).then(
+              (data) => {
+                if (data.message === "Comment created") {
+                  navigate(0);
+                } else {
+                  setValidationError(data);
+                }
+              }
+            );
+          } catch (err) {
+            console.log(err);
+          }
         }}
         className="flex flex-col  gap-3 items-center"
       >
