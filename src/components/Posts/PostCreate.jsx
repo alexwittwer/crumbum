@@ -10,7 +10,7 @@ export default function PostCreate() {
   const [value, setValue] = useState("");
   const [title, setTitle] = useState("");
   const [lede, setLede] = useState("");
-  const [error, setError] = useState("");
+  const [validationError, setValidationError] = useState("");
   const navigate = useNavigate();
   const user = useContext(UserContext);
 
@@ -21,6 +21,8 @@ export default function PostCreate() {
   function handleLede(input) {
     return setLede(input);
   }
+
+  console.log(validationError);
 
   return (
     <main>
@@ -41,15 +43,15 @@ export default function PostCreate() {
               navigate(`/posts/${data.id}`);
             } else {
               console.log(data);
-              setError(data);
+              setValidationError(data);
             }
           });
         }}
       >
         <div className="w-3/4 grid gap-1">
-          {error &&
-            error.err.errors.map((err) => {
-              return <div key={err.path}>{err.msg}</div>;
+          {validationError &&
+            validationError.errors.errors.map((error) => {
+              return <div key={error.path}>{error.msg}</div>;
             })}
           <div className="flex gap-5 items-center">
             <input
