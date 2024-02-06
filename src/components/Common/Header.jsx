@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { UserContext, LoginContext } from "../App";
+import "./Header.css";
 
 export default function Header() {
   const user = useContext(UserContext);
@@ -16,22 +17,21 @@ export default function Header() {
   return (
     <nav className="navbar bg-base-100">
       <div className="flex-1">
-        <Link to="/" className="btn btn-ghost text-xl">
-          CrumBum
+        <Link to="/" className="logo-text btn btn-ghost text-xl">
+          crumbum
         </Link>
       </div>
       <ul className="flex gap-3 px-1">
         {!user ? (
           <>
             <li>
-              <Link className="btn btn-secondary" to="/signup">
-                Join
+              <Link className="btn btn-accent" to="/posts">
+                View posts
               </Link>
             </li>
-
             <li>
-              <Link className="btn btn-accent" to="/posts">
-                Posts
+              <Link className="btn btn-secondary" to="/signup">
+                Join
               </Link>
             </li>
           </>

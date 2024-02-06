@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { UserContext } from "../App";
+import "./Landing.css";
 
 export default function Landing() {
   const user = useContext(UserContext);
@@ -11,7 +12,7 @@ export default function Landing() {
       <div className="hero min-h-screen bg-base-200">
         <div className="hero-content text-center">
           <div className="max-w-md flex-col flex gap-5">
-            <h1 className="text-5xl font-bold">
+            <h1 className="text-5xl hero-text font-bold">
               {user ? "Welcome back" : "Hello there"}
             </h1>
             {user !== null ? (

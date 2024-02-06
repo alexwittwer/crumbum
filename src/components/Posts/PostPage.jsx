@@ -45,9 +45,12 @@ export default function PostPage() {
               >
                 Delete
               </button>
-              <button disabled className="btn btn-disabled font-semibold">
+              <Link
+                to={`/posts/${post._id}/edit`}
+                className="btn btn-secondary font-semibold"
+              >
                 Edit
-              </button>
+              </Link>
             </div>
           )
         : ""}

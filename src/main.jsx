@@ -11,6 +11,7 @@ import UserPage from "./components/Users/UserPage.jsx";
 import Login from "./components/Common/Login.jsx";
 import Signup from "./components/Common/Signup.jsx";
 import PostCreate from "./components/Posts/PostCreate.jsx";
+import PostEdit from "./components/Posts/PostEdit.jsx";
 
 const router = createBrowserRouter([
   {
@@ -42,6 +43,10 @@ const router = createBrowserRouter([
       {
         path: "/posts/create",
         element: <PostCreate />,
+      },
+      {
+        path: "/posts/:postid/edit",
+        element: <PostEdit />,
       },
     ],
   },
