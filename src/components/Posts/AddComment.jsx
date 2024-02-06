@@ -20,7 +20,11 @@ export function AddComment(post) {
       <p>Comments</p>{" "}
       {validationError &&
         validationError.errors.map((error) => {
-          return <div key={error.path}>{error.msg}</div>;
+          return (
+            <div className="text-red-700" key={error.path}>
+              {error.msg}
+            </div>
+          );
         })}
       <form
         onSubmit={async (e) => {
