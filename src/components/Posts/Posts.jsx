@@ -13,7 +13,7 @@ export default function Posts() {
   }, []);
 
   if (!data) {
-    return <div class="mx-auto square-spin-2"></div>;
+    return <div className="mx-auto square-spin-2"></div>;
   }
 
   return (
