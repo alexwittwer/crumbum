@@ -50,7 +50,6 @@ export default function PostEdit() {
         method="POST"
         onSubmit={async (e) => {
           e.preventDefault();
-          console.log({ lede: lede, text: value, title: title });
           patch(
             postid,
             {
