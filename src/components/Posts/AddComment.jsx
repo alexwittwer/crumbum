@@ -5,11 +5,9 @@ import { UserContext } from "../App";
 
 export function AddComment(post) {
   const [comment, setComment] = useState("");
-  const [validationError, setValidationError] = useState("");
+  const [validationError, setValidationError] = useState(null);
   const user = useContext(UserContext);
   const navigate = useNavigate();
-
-  console.log(validationError);
 
   function handleComment(input) {
     return setComment(input);
@@ -19,6 +17,7 @@ export function AddComment(post) {
     <>
       <p>Comments</p>{" "}
       {validationError &&
+        validationError.errors &&
         validationError.errors.map((error) => {
           return (
             <div className="text-red-700" key={error.path}>
@@ -32,7 +31,9 @@ export function AddComment(post) {
           try {
             await postComment(post, { text: comment }, user.token).then(
               (data) => {
+                console.log(data);
                 if (data.message === "Comment created") {
+                  console.log(validationError);
                   navigate(0);
                 } else {
                   setValidationError(data);
