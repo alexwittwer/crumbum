@@ -3,6 +3,7 @@ import { useNavigate, Link, Outlet } from "react-router-dom";
 import { getPosts } from "../../utils/getposts";
 import { escapeHTML } from "../../utils/unescape";
 import "../Loader.css";
+import { DateTime } from "luxon";
 
 export default function Posts() {
   const [data, setData] = useState();
@@ -33,6 +34,9 @@ function Card(data) {
         <h2 className="text-xl">{data.data.title}</h2>
         <p className="opacity-80">{data.data.user.name}</p>
         {data.data.lede && <p>{escapeHTML(data.data.lede)}</p>}
+        <p>
+          {DateTime.fromISO(data.data.date).toLocaleString(DateTime.DATE_MED)}
+        </p>
 
         <div className="my-3 border-b-4 border-slate-300"></div>
       </Link>

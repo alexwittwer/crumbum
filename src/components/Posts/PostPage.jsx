@@ -8,6 +8,7 @@ import { escapeHTML } from "../../utils/unescape";
 import "./PostPage.css";
 import "../Loader.css";
 import { deletePost } from "../../utils/deletepost";
+import { DateTime } from "luxon";
 
 export default function PostPage() {
   const { postid } = useParams();
@@ -31,7 +32,7 @@ export default function PostPage() {
   const postText = escapeHTML(post.text);
 
   return (
-    <main className="mx-auto max-w-lg my-8 flex flex-col gap-5">
+    <main className="mx-3 md:mx-auto max-w-lg my-8 flex flex-col gap-5">
       {user
         ? user.user.userid === post.user._id && (
             <div className="flex gap-3">
@@ -55,6 +56,7 @@ export default function PostPage() {
           )
         : ""}
       <h1 className="text-4xl">{post.title}</h1>
+      <p>{DateTime.fromISO(post.date).toLocaleString(DateTime.DATE_MED)}</p>
       <p>
         by{" "}
         <Link to={`/user/${post.user._id}`} className="underline ">
@@ -87,9 +89,9 @@ export function AddComment(post) {
       <form
         onSubmit={async (e) => {
           e.preventDefault();
-          await postComment(post, { text: comment }, user.token).then(() =>
-            navigate(0)
-          );
+          await postComment(post, { text: comment }, user.token).then(() => {
+            navigate(0);
+          });
         }}
         className="flex flex-col  gap-3 items-center"
       >
@@ -126,7 +128,10 @@ export function ShowComments(post) {
       {post.post.comments &&
         post.post.comments.map((comment) => {
           return (
-            <div className="flex flex-col gap-3 border-opacity-50 p-3 border-2 rounded-lg bg-opacity-55">
+            <div
+              key={comment._id}
+              className="flex flex-col gap-3 border-opacity-50 p-3 border-2 rounded-lg bg-opacity-55"
+            >
               <Link
                 className="underline link-info"
                 to={`/user/${comment.user._id}`}
@@ -152,9 +157,6 @@ export function ShowComments(post) {
                         }}
                       >
                         Delete
-                      </button>
-                      <button className="btn btn-disabled " disabled>
-                        Edit
                       </button>
                     </div>
                   )

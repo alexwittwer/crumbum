@@ -39,19 +39,19 @@ export default function Header() {
           <>
             <ul className="menu menu-horizontal flex items-center gap-3 px-1">
               <li>
-                <Link
-                  className="btn py-4 btn-primary hover:bg-cyan-400"
-                  to="/posts"
-                >
-                  View posts
-                </Link>
-              </li>
-              <li>
                 <details className="">
                   <summary className="btn py-4 hover:bg-cyan-400 text-center btn-primary">
                     Menu
                   </summary>
                   <ul className="p-2 flex flex-col gap-3 bg-base-100 rounded-t-none">
+                    <li>
+                      <Link
+                        className="btn btn-accent hover:bg-cyan-400"
+                        to="/posts"
+                      >
+                        View posts
+                      </Link>
+                    </li>
                     <li>
                       <Link
                         className="btn hover:bg-cyan-300 btn-accent"

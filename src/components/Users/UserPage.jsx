@@ -8,8 +8,9 @@ export default function UserPage() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const prof = getProfile(userid).then((data) => {setProfile(data);
-    setLoading(false);
+    const prof = getProfile(userid).then((data) => {
+      setProfile(data);
+      setLoading(false);
     });
   }, []);
 
@@ -23,16 +24,18 @@ export default function UserPage() {
         <p>{profile.name}</p>
         <div className="flex flex-col gap-3 my-5">
           <p>Posts</p>
-          {profile && profile.posts.map((post) => {
-            return (
-              <Link
-                to={`/posts/${post._id}`}
-                className="t text-cyan-500 underline"
-              >
-                {post.title}
-              </Link>
-            );
-          })}
+          {profile &&
+            profile.posts.map((post) => {
+              return (
+                <Link
+                  key={post._id}
+                  to={`/posts/${post._id}`}
+                  className="t text-cyan-500 underline"
+                >
+                  {post.title}
+                </Link>
+              );
+            })}
         </div>
       </div>
     </main>
