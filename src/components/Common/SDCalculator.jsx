@@ -48,8 +48,6 @@ export default function SDCalculator() {
               handleWater(e.target.value);
             }}
           />
-          <div className="flex input justify-between">
-            {" "}
             <label className="form-control w-full max-w-xs">
   <div className="label">
     <span className="label-text">Salt</span>
@@ -62,7 +60,6 @@ export default function SDCalculator() {
                 <option>2%</option>
               </select>
             </label>
-          </div>
           <input
             className="input"
             type="number"
