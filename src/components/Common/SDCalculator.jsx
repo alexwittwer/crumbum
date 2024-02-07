@@ -50,19 +50,18 @@ export default function SDCalculator() {
           />
           <div className="flex input justify-between">
             {" "}
-            <select
-              className="select select-bordered w-full max-w-xs"
-              id="salt"
+            <label className="form-control w-full max-w-xs">
+  <div className="label">
+    <span className="label-text">Salt</span>
+          </div>
+            <select id="salt"
               name="salt"
-              onChange={(e) => handleSalt(e.target.value)}
-            >
-              <option className="" value="salt-0">
-                0%
-              </option>
-              <option className="" value="salt-2">
-                2%
-              </option>
-            </select>{" "}
+              onChange={(e) => handleSalt(e.target.value)} className="select select-bordered">
+                <option disabled selected>Pick one</option>
+                <option>None</option>
+                <option>2%</option>
+              </select>
+            </label>
           </div>
           <input
             className="input"
