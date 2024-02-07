@@ -22,6 +22,11 @@ export default function Header() {
         </Link>
       </div>
       <ul className="flex gap-3 px-1">
+        <li>
+          <Link className="btn btn-accent" to="/calculator">
+            Sourdough Calculator
+          </Link>
+        </li>
         {!user ? (
           <>
             <li>
