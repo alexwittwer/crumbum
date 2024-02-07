@@ -51,7 +51,7 @@ export default function SDCalculator() {
           <div className="flex input justify-between">
             {" "}
             <select
-              className="select"
+              className="select select-bordered w-full max-w-xs"
               id="salt"
               name="salt"
               onChange={(e) => handleSalt(e.target.value)}
