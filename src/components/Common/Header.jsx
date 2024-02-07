@@ -22,18 +22,14 @@ export default function Header() {
         </Link>
       </div>
       <ul className="flex gap-3 px-1">
+        {!user ? (
+          <>
         <li>
           <Link className="btn btn-accent" to="/calculator">
             Sourdough Calculator
           </Link>
         </li>
-        {!user ? (
-          <>
-            <li>
-              <Link className="btn btn-accent" to="/posts">
-                View posts
-              </Link>
-            </li>
+
             <li>
               <Link className="btn btn-secondary" to="/signup">
                 Join
@@ -72,7 +68,12 @@ export default function Header() {
                       >
                         Write a post
                       </Link>
-                    </li>
+                    </li>        <li>
+          <Link className="btn btn-accent" to="/calculator">
+            Sourdough Calculator
+          </Link>
+        </li>
+
                     <li>
                       <button
                         className="btn hover:bg-red-500 hover:text-slate-50 btn-secondary"
