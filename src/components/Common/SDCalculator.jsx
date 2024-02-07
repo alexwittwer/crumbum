@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { sourdough } from "../../utils/calculateSourdoughRise";
 
 export default function SDCalculator() {
   const [formData, setFormData] = useState({});
@@ -6,6 +7,8 @@ export default function SDCalculator() {
   const [flour, setFlour] = useState();
   const [water, setWater] = useState();
   const [salt, setSalt] = useState();
+  const [starter, setStarter] = useState();
+  const [speed, setSpeed] = useState();
 
   function handleTemp(input) {
     return setTemp(input);
@@ -21,6 +24,14 @@ export default function SDCalculator() {
 
   function handleSalt(input) {
     return setSalt(input);
+  }
+
+  function handleStarter(input) {
+    return setStarter(input);
+  }
+
+  function handleSpeed(input) {
+    return setSpeed(input);
   }
 
   return (
@@ -47,6 +58,22 @@ export default function SDCalculator() {
             onChange={(e) => {
               handleWater(e.target.value);
             }}
+          />{" "}
+          <input
+            className="input"
+            type="number"
+            placeholder="Starter (grams)"
+            onChange={(e) => {
+              handleStarter(e.target.value);
+            }}
+          />{" "}
+          <input
+            className="input"
+            type="number"
+            placeholder="Starter Speed (try 1.23)"
+            onChange={(e) => {
+              handleSpeed(e.target.value);
+            }}
           />
           <div className="flex input justify-between">
             {" "}
@@ -70,7 +97,7 @@ export default function SDCalculator() {
           <input
             className="input"
             type="number"
-            placeholder="Temperature (70 f)"
+            placeholder="Avg Temp (fahreinheit)"
             onChange={(e) => {
               handleTemp(e.target.value);
             }}
