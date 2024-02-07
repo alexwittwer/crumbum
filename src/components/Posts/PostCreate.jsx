@@ -50,8 +50,13 @@ export default function PostCreate() {
       >
         <div className="w-3/4 grid gap-1">
           {validationError &&
+            validationError.errors &&
             validationError.errors.map((error) => {
-              return <div key={error.path}>{error.msg}</div>;
+              return (
+                <div className="text-red-600" key={error.path}>
+                  {error.msg}
+                </div>
+              );
             })}
           <div className="flex gap-5 items-center">
             <input
