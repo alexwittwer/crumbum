@@ -32,6 +32,9 @@ export default function SDCalculator() {
       >
         {" "}
         <div className="grid grid-cols-1 gap-3">
+          <label className="form-control w-full max-w-xs">
+  <div className="label">
+    <span className="label-text">Flour</span>
           <input
             className="input"
             type="number"
@@ -40,6 +43,8 @@ export default function SDCalculator() {
               handleFlour(e.target.value);
             }}
           />
+</div>
+</label>
           <input
             className="input"
             type="number"
