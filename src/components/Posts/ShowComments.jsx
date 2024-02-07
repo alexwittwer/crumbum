@@ -112,7 +112,7 @@ function EditComment({ toggleEdit, commentid, commentText, post, user }) {
       >
         <textarea
           className="w-full textarea textarea-bordered p-2"
-          defaultValue={commentText}
+          defaultValue={comment}
           type="text"
           rows={5}
           cols={20}
