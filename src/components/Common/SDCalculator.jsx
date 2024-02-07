@@ -88,7 +88,7 @@ export default function SDCalculator() {
 <div className="form-control">
   <label className="label cursor-pointer">
     <span className="label-text">Cold proof</span> 
-    <input type="checkbox" checked="checked" className="checkbox checkbox-accent" />
+    <input type="checkbox" className="checkbox checkbox-accent" />
   </label>
 </div>
         </div>
