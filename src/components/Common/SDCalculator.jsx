@@ -50,11 +50,8 @@ export default function SDCalculator() {
           />
           <div className="flex input justify-between">
             {" "}
-            <label className="text-center my-3" htmlFor="salt">
-              Salt
-            </label>
             <select
-              className="bg-opacity-50 my-1 rounded-md px-10"
+              className="select"
               id="salt"
               name="salt"
               onChange={(e) => handleSalt(e.target.value)}
