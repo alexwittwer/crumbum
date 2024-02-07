@@ -6,9 +6,14 @@ export default function SDCalculator() {
   const [flour, setFlour] = useState();
   const [water, setWater] = useState();
   const [salt, setSalt] = useState();
+  const [coldproof, setColdProof] = useState(false)
 
   function handleTemp(input) {
     return setTemp(input);
+  }
+
+  function handleColdProof() {
+    return setColdProof(!coldproof)
   }
 
   function handleFlour(input) {
@@ -88,7 +93,7 @@ export default function SDCalculator() {
 <div className="form-control">
   <label className="label cursor-pointer">
     <span className="label-text">Cold proof</span> 
-    <input type="checkbox" className="checkbox checkbox-accent" />
+    <input type="checkbox" className="checkbox checkbox-accent" onChange ={() => { handleColdProof();}}/>
   </label>
 </div>
         </div>
