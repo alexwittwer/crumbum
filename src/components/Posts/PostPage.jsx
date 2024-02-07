@@ -8,7 +8,7 @@ import "./PostPage.css";
 import "../Loader.css";
 import { deletePost } from "../../utils/deletepost";
 import { DateTime } from "luxon";
-import { ShowComments } from "./ShowComment";
+import { ShowComments } from "./ShowComments";
 
 export default function PostPage() {
   const { postid } = useParams();
