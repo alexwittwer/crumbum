@@ -47,7 +47,7 @@ function Comment({ post, comment, user }) {
   }
 
   return (
-    <div className="flex flex-col gap-3 border-opacity-50 p-3 border-2 rounded-lg bg-opacity-55">
+    <div className="flex flex-col my-3 gap-3 border-opacity-50 p-3 border-2 rounded-lg bg-opacity-55">
       <Link className="underline link-info" to={`/user/${comment.user._id}`}>
         {comment.user.name}
       </Link>
@@ -82,7 +82,7 @@ function Comment({ post, comment, user }) {
   );
 }
 
-function EditComment({ commentid, commentText, post, user }) {
+function EditComment({ toggleEdit, commentid, commentText, post, user }) {
   const [comment, setComment] = useState(escapeHTML(commentText));
   const navigate = useNavigate();
 
@@ -123,7 +123,16 @@ function EditComment({ commentid, commentText, post, user }) {
             handleComment(e.target.value);
           }}
         />
-        <button className="btn btn-outline">Save</button>
+        <div className="flex gap-5">
+          <button className="btn btn-outline">Save</button>
+          <button
+            className="btn btn-outline"
+            type="button"
+            onClick={() => toggleEdit()}
+          >
+            Cancel
+          </button>
+        </div>
       </form>
     </div>
   );
