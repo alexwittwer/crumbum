@@ -38,7 +38,7 @@ export default function Header() {
           </>
         ) : (
           <>
-            <ul className="menu menu-horizontal flex items-center gap-3 px-1">
+            <ul className="menu mr-5 menu-horizontal flex items-center gap-3 px-1">
               <li>
                 <details className="">
                   <summary className="btn py-4 hover:bg-cyan-400 text-center btn-primary">
