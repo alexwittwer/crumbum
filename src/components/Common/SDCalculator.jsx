@@ -30,59 +30,61 @@ export default function SDCalculator() {
         action=""
         onSubmit={(e) => e.preventDefault()}
       >
-        {" "}
         <div className="grid grid-cols-1 gap-3">
           <label className="form-control w-full max-w-xs">
-  <div className="label">
-    <span className="label-text">Flour</span> 
-</div>
-          <input
-            className="input"
-            type="number"
-            placeholder="Flour (grams)"
-            onChange={(e) => {
-              handleFlour(e.target.value);
-            }}
-          />
-</label>
+            <div className="label">
+              <span className="label-text">Flour</span> 
+            </div>
+            <input
+              className="input"
+              type="number"
+              placeholder="Flour (grams)"
+              onChange={(e) => {
+                handleFlour(e.target.value);
+              }}
+            />
+          </label>
           <label className="form-control w-full max-w-xs">
-  <div className="label">
-    <span className="label-text">Water</span> 
-</div>
-          <input
-            className="input"
-            type="number"
-            placeholder="Water (grams)"
-            onChange={(e) => {
-              handleWater(e.target.value);
-            }}
-          />
-</label>
-            <label className="form-control w-full max-w-xs">
-  <div className="label">
-    <span className="label-text">Salt</span>
-          </div>
-            <select id="salt"
+            <div className="label">
+              <span className="label-text">Water</span> 
+            </div>
+            <input
+              className="input"
+              type="number"
+              placeholder="Water (grams)"
+              onChange={(e) => {
+                handleWater(e.target.value);
+              }}
+            />
+          </label>
+          <label className="form-control w-full max-w-xs">
+            <div className="label">
+              <span className="label-text">Salt</span>
+            </div>
+            <select
+              id="salt"
               name="salt"
-              onChange={(e) => handleSalt(e.target.value)} className="select select-bordered">
-                <option disabled selected>Pick one</option>
-                <option>None</option>
-                <option>2%</option>
-              </select>
-            </label>
+              onChange={(e) => handleSalt(e.target.value)}
+              className="select select-bordered"
+            >
+              <option disabled selected>Pick one</option>
+              <option>None</option>
+              <option>2%</option>
+            </select>
+          </label>
           <label className="form-control w-full max-w-xs">
-  <div className="label">
-    <span className="label-text">Temperature</span> 
-</div>
-          <input
-            className="input"
-            type="number"
-            placeholder="Temperature (70 f)"
-            onChange={(e) => {
-              handleTemp(e.target.value);
-            }}
-          />
-</label>
+            <div className="label">
+              <span className="label-text">Temperature</span> 
+            </div>
+            <input
+              className="input"
+              type="number"
+              placeholder="Temperature (70 f)"
+              onChange={(e) => {
+                handleTemp(e.target.value);
+              }}
+            />
+          </label>
         </div>
         <div className="flex gap-3 justify-center">
           <button className="btn btn-primary grid" onClick={() => {}}>
