@@ -85,6 +85,12 @@ export default function SDCalculator() {
               }}
             />
           </label>
+<div className="form-control">
+  <label className="label cursor-pointer">
+    <span className="label-text">Cold proof</span> 
+    <input type="checkbox" checked="checked" className="checkbox" />
+  </label>
+</div>
         </div>
         <div className="flex gap-3 justify-center">
           <button className="btn btn-primary grid" onClick={() => {}}>
