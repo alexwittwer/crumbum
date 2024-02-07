@@ -47,7 +47,7 @@ export default function SDCalculator() {
 </label>
           <label className="form-control w-full max-w-xs">
   <div className="label">
-    <span className="label-text">Flour</span> 
+    <span className="label-text">Water</span> 
 </div>
           <input
             className="input"
@@ -70,6 +70,10 @@ export default function SDCalculator() {
                 <option>2%</option>
               </select>
             </label>
+          <label className="form-control w-full max-w-xs">
+  <div className="label">
+    <span className="label-text">Temperature</span> 
+</div>
           <input
             className="input"
             type="number"
@@ -77,7 +81,8 @@ export default function SDCalculator() {
             onChange={(e) => {
               handleTemp(e.target.value);
             }}
-          />{" "}
+          />
+</label>
         </div>
         <div className="flex gap-3 justify-center">
           <button className="btn btn-primary grid" onClick={() => {}}>
