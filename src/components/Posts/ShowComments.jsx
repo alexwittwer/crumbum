@@ -7,7 +7,6 @@ import { patchComment } from "../../utils/patchComment";
 
 export function ShowComments(post) {
   const user = useContext(UserContext);
-  console.log(post.post.comments);
 
   return (
     <div>
@@ -53,8 +52,7 @@ function Comment({ post, comment, user }) {
       </Link>
       <p>{escapeHTML(comment.text)}</p>
       {user
-        ? user.user.userid === comment.user._id ||
-          (user.user.isAdmin && (
+        ? (user.user.isAdmin || user.user.userid === comment.user._id) && (
             <div className="flex justify-end my-3 gap-3">
               <button
                 className=" btn btn-primary font-semibold rounded-md"
@@ -77,7 +75,7 @@ function Comment({ post, comment, user }) {
                 Edit
               </button>
             </div>
-          ))
+          )
         : ""}
     </div>
   );
@@ -120,7 +118,6 @@ function EditComment({ toggleEdit, commentid, commentText, post, user }) {
           name="comment"
           wrap="hard"
           onChange={(e) => {
-            console.log(comment);
             handleComment(e.target.value);
           }}
         />
