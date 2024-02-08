@@ -54,10 +54,10 @@ export default function SourdoughCalculator() {
           }}
         >
           <div className="grid grid-cols-1 gap-3">
-            <p className="text-center max-w-72">
+            <div className="text-center max-w-72">
               <p className="text-red-600">Warning:</p> Results are just an
               estimate and this is a work in progress
-            </p>
+            </div>
             <label className="form-control w-full max-w-xs">
               <div className="label">
                 <span className="label-text">Flour</span>
@@ -121,7 +121,6 @@ export default function SourdoughCalculator() {
               disabled={
                 !(data.flour && data.water && data.starter && data.temp)
               }
-              onClick={() => {}}
             >
               Submit
             </button>

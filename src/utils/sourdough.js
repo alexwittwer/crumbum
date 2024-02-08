@@ -1,4 +1,5 @@
 export default function sourdough({ temp, starter, flour, water }) {
+    if (!temp || !starter || !flour || !water) return null
     // converts starter into % of total flour to fermeted flour
     const levainPct = starter / (flour + 0.5 * starter);
 
@@ -17,7 +18,6 @@ export default function sourdough({ temp, starter, flour, water }) {
     const hours = Math.floor(fixed)
     const minutes = ((fixed - hours) * 60).toFixed(0)
 
-    console.log({doubling, fixed, hours, minutes})
 
     return { levain, doubling, hydration, hours, minutes};
   }
