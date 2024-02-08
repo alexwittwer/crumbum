@@ -1,7 +1,8 @@
 import React from "react";
 import { useImmer } from "use-immer";
+import sourdough from "../../utils/sourdough";
 
-export default function SDCalculator() {
+export default function SourdoughCalculator() {
   const [data, updateData] = useImmer({
     temp: null,
     flour: null,
@@ -9,24 +10,6 @@ export default function SDCalculator() {
     starter: null,
   });
   const [results, updateResults] = useImmer(null);
-
-  function fermentation({ temp, starter, flour, water }) {
-    // converts starter into % of total flour to fermeted flour
-    const levainPct = starter / (flour + 0.5 * starter);
-
-    const doubling =
-      Math.log(levainPct / 0.894) *
-      (-0.0000336713 * Math.pow(temp, 4) +
-        0.0105207916 * Math.pow(temp, 3) -
-        1.2495985607 * Math.pow(temp, 2) +
-        67.0024722564 * temp -
-        1374.6540546564);
-    const hydration = (water / (flour + starter * 0.5)) * 100;
-
-    const levain = levainPct * 100;
-
-    return { levain, doubling, hydration };
-  }
 
   function updateFormData(field, value) {
     updateData((draft) => {
@@ -49,7 +32,9 @@ export default function SDCalculator() {
             </div>
             <div className="flex bg-slate-700 gap-5 rounded-lg p-5 justify-between">
               <p>Time to Double: </p>
-              <p>{results.doubling.toFixed(2)} hours</p>
+              <p>
+                {results.hours}h {results.minutes}m
+              </p>
             </div>
           </div>
           <button
@@ -65,7 +50,7 @@ export default function SDCalculator() {
           action=""
           onSubmit={(e) => {
             e.preventDefault();
-            updateResults(fermentation(data));
+            updateResults(sourdough(data));
           }}
         >
           <div className="grid grid-cols-1 gap-3">

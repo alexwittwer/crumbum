@@ -12,7 +12,7 @@ import Login from "./components/Common/Login.jsx";
 import Signup from "./components/Common/Signup.jsx";
 import PostCreate from "./components/Posts/PostCreate.jsx";
 import PostEdit from "./components/Posts/PostEdit.jsx";
-import SDCalculator from "./components/Common/SDCalculator.jsx";
+import SourdoughCalculator from "./components/Common/SourdoughCalculator.jsx";
 
 const router = createBrowserRouter([
   {
@@ -51,7 +51,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/calculator",
-        element: <SDCalculator />,
+        element: <SourdoughCalculator />,
       },
     ],
   },
