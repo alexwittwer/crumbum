@@ -53,7 +53,8 @@ function Comment({ post, comment, user }) {
       </Link>
       <p>{escapeHTML(comment.text)}</p>
       {user
-        ? user.user.userid === comment.user._id && (
+        ? user.user.userid === comment.user._id ||
+          (user.user.isAdmin && (
             <div className="flex justify-end my-3 gap-3">
               <button
                 className=" btn btn-primary font-semibold rounded-md"
@@ -76,7 +77,7 @@ function Comment({ post, comment, user }) {
                 Edit
               </button>
             </div>
-          )
+          ))
         : ""}
     </div>
   );

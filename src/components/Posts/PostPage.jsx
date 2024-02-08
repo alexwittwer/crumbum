@@ -33,7 +33,8 @@ export default function PostPage() {
   return (
     <main className="mx-3 md:mx-auto max-w-lg my-8 flex flex-col gap-5">
       {user
-        ? user.user.userid === post.user._id && (
+        ? user.user.userid === post.user._id ||
+          (user.user.isAdmin && (
             <div className="flex gap-3">
               <button
                 onClick={async (e) => {
@@ -52,7 +53,7 @@ export default function PostPage() {
                 Edit
               </Link>
             </div>
-          )
+          ))
         : ""}
       <h1 className="text-4xl">{post.title}</h1>
       <p>{DateTime.fromISO(post.date).toLocaleString(DateTime.DATE_MED)}</p>
