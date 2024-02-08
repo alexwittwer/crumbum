@@ -106,7 +106,7 @@ export default function SourdoughCalculator() {
               </div>
               <input
                 className="input"
-                type="number"
+                type="float"
                 defaultValue={data.temp}
                 placeholder="in Fahreinheit"
                 onChange={(e) => {
