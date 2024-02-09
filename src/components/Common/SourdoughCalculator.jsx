@@ -20,30 +20,7 @@ export default function SourdoughCalculator() {
   return (
     <main className="max-w-3/4 mx-auto">
       {results !== null ? (
-        <div className="flex flex-col gap-3 justify-center">
-          <div className="min-w-3/4 flex flex-col gap-5 ">
-            <div className="flex p-5 justify-between bg-slate-700 rounded-lg">
-              <p>Starter: </p>
-              <p>{results.levain.toFixed(2)}%</p>
-            </div>
-            <div className="flex p-5 bg-slate-700 rounded-lg justify-between">
-              <p>Hydration: </p>
-              <p>{results.hydration.toFixed(2)}%</p>
-            </div>
-            <div className="flex bg-slate-700 gap-5 rounded-lg p-5 justify-between">
-              <p>Time to Double: </p>
-              <p>
-                {results.hours}h {results.minutes}m
-              </p>
-            </div>
-          </div>
-          <button
-            className="btn btn-primary self-center"
-            onClick={() => updateResults(null)}
-          >
-            Reset
-          </button>
-        </div>
+        <Results results={results} updateResults={updateResults} />
       ) : (
         <form
           className="grid gap-3"
@@ -129,5 +106,38 @@ export default function SourdoughCalculator() {
         </form>
       )}
     </main>
+  );
+}
+
+export function Results({ results, updateResults }) {
+  return (
+    <div className="flex flex-col gap-3 justify-center">
+      <div className="min-w-3/4 flex flex-col gap-5 ">
+        <div className="flex p-5 justify-between bg-slate-700 rounded-lg">
+          <p>Starter: </p>
+          <p>{results.levain.toFixed(2)}%</p>
+        </div>
+        <div className="flex p-5 bg-slate-700 rounded-lg justify-between">
+          <p>Hydration: </p>
+          <p>{results.hydration.toFixed(2)}%</p>
+        </div>{" "}
+        <div className="flex bg-slate-700 gap-5 rounded-lg p-5 justify-between">
+          <p>Total Dough Weight: </p>
+          <p>{results.totalWeight} grams</p>
+        </div>
+        <div className="flex bg-slate-700 gap-5 rounded-lg p-5 justify-between">
+          <p>Time to Double: </p>
+          <p>
+            {results.hours}h {results.minutes}m
+          </p>
+        </div>
+      </div>
+      <button
+        className="btn btn-primary self-center"
+        onClick={() => updateResults(null)}
+      >
+        Reset
+      </button>
+    </div>
   );
 }
