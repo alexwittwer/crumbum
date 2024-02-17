@@ -1,3 +1,5 @@
+// import { uall_ave } from "./bwraith";
+
 export default function sourdough({ temp, starter, flour, water }) {
   if (!temp || !starter || !flour || !water) return null;
   // converts starter into % of total flour to fermeted flour
@@ -19,5 +21,7 @@ export default function sourdough({ temp, starter, flour, water }) {
   const hydration = (water + starter * 0.5) / flour + starter * 0.5;
   const totalWeight = water + flour + starter;
 
+  // const bwraith = uall_ave(temp, hydration, 0.02, 1.23, levainPct * 1.03);
+  // console.log(bwraith);
   return { levain, doubling, hydration, hours, minutes, totalWeight };
 }

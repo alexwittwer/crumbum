@@ -1,8 +1,25 @@
-# React + Vite
+### crumbum.club
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+---
 
-Currently, two official plugins are available:
+> "A crumbum is a person who is no damn good." - Mayor Rizzo
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
+
+## Features
+- Easy to use interface for creating and writing blog posts
+- Quill as a rich text editor allows for formatting text
+- Images can be added using markup language, but not scripts so no worries about XSS!
+- You can edit or delete your own comments
+
+## Tech Stack
+
+- React
+- Vite
+- TailwindCSS
+- React Router
+- Quill Rich text editor
+
+## Website
+
+Visit [crumbum.club](https://www.crumbum.club) for more information.
