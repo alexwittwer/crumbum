@@ -2,7 +2,7 @@
 
 ---
 
-> "A crumbum is a person who is no damn good." - Mayor Rizzo
+> "I’ll do it alone with you, in the back of that fence. Just the three of us, four of us, me and you. Show you what kind of man you are. You’re less than a man. Ok? You’re a crumb creep. And I wouldn’t take that off of nobody. And there’s three of you, and I’m by myself. And when it’s over, there’ll be nothing to it. Win or lose, ok? You're a real crumb bum" - Mayor Rizzo
 
 ---
 
