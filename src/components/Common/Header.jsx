@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { UserContext, LoginContext } from "../App";
 import "./Header.css";
@@ -24,11 +24,11 @@ export default function Header() {
       <ul className="flex gap-3 px-1">
         {!user ? (
           <>
-        <li>
-          <Link className="btn btn-accent" to="/calculator">
-            Sourdough Calculator
-          </Link>
-        </li>
+            <li>
+              <Link className="btn btn-accent" to="/calculator">
+                Sourdough Calculator
+              </Link>
+            </li>
 
             <li>
               <Link className="btn btn-secondary" to="/signup">
@@ -69,15 +69,15 @@ export default function Header() {
                         Write a post
                       </Link>
                     </li>        <li>
-          <Link className="btn btn-accent" to="/calculator">
-            Sourdough Calculator
-          </Link>
-        </li>
+                      <Link className="btn btn-accent" to="/calculator">
+                        Sourdough Calculator
+                      </Link>
+                    </li>
 
                     <li>
                       <button
                         className="btn hover:bg-red-500 hover:text-slate-50 btn-secondary"
-                        onClick={(e) => {
+                        onClick={() => {
                           logout();
                         }}
                       >

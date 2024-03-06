@@ -4,7 +4,7 @@ import { LoginContext, UserContext } from "../App";
 import { signup } from "../../utils/signup";
 import { login } from "../../utils/login";
 
-export default function Signup(data) {
+export default function Signup() {
   const [pwd, setPwd] = useState("");
   const [confirmPwd, setConfirmPwd] = useState("");
   const [username, setUsername] = useState("");
@@ -17,7 +17,7 @@ export default function Signup(data) {
     if (user) {
       navigate("/");
     }
-  }, []);
+  }, [user, navigate]);
 
   function handlePassword(input) {
     return setPwd(input);

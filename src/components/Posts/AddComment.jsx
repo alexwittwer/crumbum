@@ -31,9 +31,7 @@ export function AddComment(post) {
           try {
             await postComment(post, { text: comment }, user.token).then(
               (data) => {
-                console.log(data);
                 if (data.message === "Comment created") {
-                  console.log(validationError);
                   navigate(0);
                 } else {
                   setValidationError(data);

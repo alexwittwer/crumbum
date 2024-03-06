@@ -53,29 +53,29 @@ function Comment({ post, comment, user }) {
       <p>{escapeHTML(comment.text)}</p>
       {user
         ? (user.user.isAdmin || user.user.userid === comment.user._id) && (
-            <div className="flex justify-end my-3 gap-3">
-              <button
-                className=" btn btn-primary font-semibold rounded-md"
-                onClick={async () => {
-                  await deleteComment(post.post._id, comment._id, user).then(
-                    () => {
-                      navigate(0);
-                    }
-                  );
-                }}
-              >
-                Delete
-              </button>
-              <button
-                className="btn btn-accent"
-                onClick={() => {
-                  toggleEdit();
-                }}
-              >
-                Edit
-              </button>
-            </div>
-          )
+          <div className="flex justify-end my-3 gap-3">
+            <button
+              className=" btn btn-primary font-semibold rounded-md"
+              onClick={async () => {
+                await deleteComment(post.post._id, comment._id, user).then(
+                  () => {
+                    navigate(0);
+                  }
+                );
+              }}
+            >
+              Delete
+            </button>
+            <button
+              className="btn btn-accent"
+              onClick={() => {
+                toggleEdit();
+              }}
+            >
+              Edit
+            </button>
+          </div>
+        )
         : ""}
     </div>
   );
@@ -100,7 +100,7 @@ function EditComment({ toggleEdit, commentid, commentText, post, user }) {
               commentid,
               { text: comment },
               user.token
-            ).then((data) => {
+            ).then(() => {
               navigate(0);
             });
           } catch (err) {

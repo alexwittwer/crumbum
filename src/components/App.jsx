@@ -3,6 +3,9 @@ import { Outlet, useLocation } from "react-router-dom";
 import Header from "./Common/Header";
 import Footer from "./Common/Footer";
 import Landing from "./Common/Landing";
+import '@mantine/core/styles.css';
+
+import { MantineProvider } from '@mantine/core';
 
 export const UserContext = createContext(null);
 export const LoginContext = createContext(null);
@@ -21,20 +24,18 @@ export default function App() {
     }
   }, []);
 
-  function logout() {
-    localStorage.removeItem("user");
-    return setUser(null);
-  }
 
   return (
-    <UserContext.Provider value={user}>
-      <LoginContext.Provider value={setUser}>
-        <div className="flex flex-col justify-between min-h-screen bg-base-200">
-          <Header />
-          {url.pathname === "/" ? <Landing /> : <Outlet />}
-          <Footer />
-        </div>
-      </LoginContext.Provider>
-    </UserContext.Provider>
+    <MantineProvider>
+      <UserContext.Provider value={user}>
+        <LoginContext.Provider value={setUser}>
+          <div className="flex flex-col justify-between min-h-screen bg-base-200">
+            <Header />
+            {url.pathname === "/" ? <Landing /> : <Outlet />}
+            <Footer />
+          </div>
+        </LoginContext.Provider>
+      </UserContext.Provider>
+    </MantineProvider>
   );
 }

@@ -22,7 +22,6 @@ export default function PostCreate() {
     return setLede(input);
   }
 
-  console.log(validationError);
 
   return (
     <main>
@@ -42,7 +41,6 @@ export default function PostCreate() {
             if (data.message === "Post created") {
               navigate(`/posts/${data.id}`);
             } else {
-              console.log(data);
               setValidationError(data);
             }
           });

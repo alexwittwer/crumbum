@@ -15,13 +15,13 @@ export default function PostEdit() {
   const [title, setTitle] = useState("");
   const [lede, setLede] = useState("");
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
+  const [error] = useState("");
   const { postid } = useParams();
   const navigate = useNavigate();
   const user = useContext(UserContext);
 
   useEffect(() => {
-    const postdata = getPosts(postid).then((data) => {
+    getPosts(postid).then((data) => {
       const fixedText = escapeHTML(data.text);
 
       setValue(fixedText);
@@ -29,7 +29,7 @@ export default function PostEdit() {
       setPost(data);
       setLoading(false);
     });
-  }, []);
+  }, [postid]);
 
   if (loading) {
     return <div className="mx-auto square-spin-2"></div>;

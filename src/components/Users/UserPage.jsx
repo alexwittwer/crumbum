@@ -9,7 +9,7 @@ export default function UserPage() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const prof = getProfile(userid).then((data) => {
+    getProfile(userid).then((data) => {
       setProfile(data);
       setLoading(false);
     });

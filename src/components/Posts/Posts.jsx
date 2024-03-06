@@ -1,5 +1,5 @@
-import { useContext, useEffect, useState } from "react";
-import { useNavigate, Link, Outlet } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, Outlet } from "react-router-dom";
 import { getPosts } from "../../utils/getposts";
 import { escapeHTML } from "../../utils/unescape";
 import "../Loader.css";
@@ -9,7 +9,7 @@ export default function Posts() {
   const [data, setData] = useState();
 
   useEffect(() => {
-    const postData = getPosts().then((data) => setData(Array.from(data)));
+    getPosts().then((data) => setData(Array.from(data)));
   }, []);
 
   if (!data) {
