@@ -23,7 +23,6 @@ export default function Landing() {
                     navigate("/posts/create");
                   }}
                 >
-                  {" "}
                   Create a new post
                 </button>
                 <button
@@ -32,7 +31,6 @@ export default function Landing() {
                     navigate("/posts");
                   }}
                 >
-                  {" "}
                   Browse posts
                 </button>
               </div>
